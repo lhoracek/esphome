@@ -35,7 +35,7 @@ CONFIG_SCHEMA = cv.Schema(
 ).extend(cv.polling_component_schema("10s"))
 
 
-@coroutine_with_priority(54.0)
+@coroutine_with_priority(53.0) # Allow in safe mode
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
 
