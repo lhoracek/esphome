@@ -2,6 +2,7 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.const import CONF_ID, CONF_TIME_ID
 from esphome.components import time
+from esphome.core import coroutine_with_priority
 
 CONF_ADDRESS = "address"
 CONF_NETMASK = "netmask"
@@ -34,6 +35,7 @@ CONFIG_SCHEMA = cv.Schema(
 ).extend(cv.polling_component_schema("10s"))
 
 
+@coroutine_with_priority(54.0)
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
 
